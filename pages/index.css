@@ -1,0 +1,5 @@
+/*Clears default browser styles*/
+@import url(../vendor/normalize.css);
+
+/*Adds fonts*/
+@import url(../vendor/fonts/fonts.css);
