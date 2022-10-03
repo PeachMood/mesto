@@ -1,0 +1,28 @@
+.header {
+  min-height: 74px;
+  border: 1px solid transparent;
+  border-bottom: solid #545454;
+  position: relative;
+  margin: 45px 200px 40px;
+}
+
+@media screen and (max-width: 1080px) {
+  .header {
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .header {
+    min-height: 65px;
+    margin: 35px 60px 30px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .header {
+    min-height: 56px;
+    margin: 28px 0 42px;
+  }
+}
