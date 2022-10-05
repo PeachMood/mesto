@@ -1,0 +1,10 @@
+.card__like-button {
+  flex-shrink: 0;
+  background: url(.././../../images/card-like-button.svg) center no-repeat;
+  width: 22px;
+  height: 19px;
+  cursor: pointer;
+  border: 0;
+  outline: 0;
+  padding: 0;
+}

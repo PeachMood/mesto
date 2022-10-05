@@ -3,12 +3,10 @@
   border: 1px solid transparent;
   border-bottom: solid #545454;
   position: relative;
-  margin-bottom: 40px;
 }
 
 @media screen and (max-width: 480px) {
   .header {
     min-height: 56px;
-    margin-bottom: 42px;
   }
 }

@@ -25,5 +25,16 @@
 @import url(../blocks/profile/__wrapper/profile__wrapper.css);
 @import url(../blocks/profile/__name/profile__name.css);
 @import url(../blocks/profile/__edit-button/profile__edit-button.css);
-@import url(../blocks/profile/__status/profile__status.css);
+@import url(../blocks/profile/__job/profile__job.css);
 @import url(../blocks/profile/__add-button/profile__add-button.css);
+
+/*Стили для блока cards*/
+@import url(../blocks/cards/cards.css);
+
+/*Стили для блока card*/
+@import url(../blocks/card/card.css);
+@import url(../blocks/card/__wrapper/card__wrapper.css);
+@import url(../blocks/card/__image/card__image.css);
+@import url(../blocks/card/__caption/card__caption.css);
+@import url(../blocks/card/__text/card__text.css);
+@import url(../blocks/card/__like-button/card__like-button.css);
