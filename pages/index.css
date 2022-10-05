@@ -38,3 +38,6 @@
 @import url(../blocks/card/__caption/card__caption.css);
 @import url(../blocks/card/__text/card__text.css);
 @import url(../blocks/card/__like-button/card__like-button.css);
+
+/*Стили для блока footer*/
+@import url(../blocks/footer/footer.css);
