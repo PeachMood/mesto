@@ -9,7 +9,7 @@
 @media screen and (max-width: 720px) {
   .profile__container {
     flex-direction: column;
-    max-width: 75%;
+    max-width: 80%;
     gap: 26px;
   }
 }

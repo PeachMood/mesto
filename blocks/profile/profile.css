@@ -2,13 +2,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 40px 0 51px;
+  padding: 40px 0 50px;
 }
 
 @media screen and (max-width: 720px) {
   .profile {
     flex-direction: column;
-    gap: 36px;
+    gap: 33px;
   }
 }
 
