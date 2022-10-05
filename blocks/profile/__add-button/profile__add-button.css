@@ -1,0 +1,16 @@
+.profile__add-button {
+  flex-shrink: 0;
+  background: url(../../../images/profile-plus-icon.svg) center no-repeat;
+  border: 2px solid #fff;
+  outline: none;
+  cursor: pointer;
+  width: 150px;
+  height: 50px;
+  padding: 0;
+}
+
+@media screen and (max-width: 720px) {
+  .profile__add-button {
+    width: 282px;
+  }
+}
