@@ -33,7 +33,7 @@
 
 /*Стили для блока card*/
 @import url(../blocks/card/card.css);
-@import url(../blocks/card/__wrapper/card__wrapper.css);
+@import url(../blocks/card/__square/card__square.css);
 @import url(../blocks/card/__image/card__image.css);
 @import url(../blocks/card/__caption/card__caption.css);
 @import url(../blocks/card/__text/card__text.css);

@@ -2,7 +2,6 @@
   min-height: 74px;
   border: 1px solid transparent;
   border-bottom: solid #545454;
-  position: relative;
 }
 
 @media screen and (max-width: 480px) {

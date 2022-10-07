@@ -2,6 +2,7 @@
 <html lang="ru">
   <head>
     <title>Место</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Сайт для размещения красивых фотографий">
     <meta name="keywords" content="фотографии, место, Яндекс Практикум">
@@ -29,42 +30,54 @@
         </section>
         <section class="cards" aria-label="Карточки">
           <figure class="card">
-            <img class="card__image" src="./images/card-bukchon.jpg" alt="Деревня Букчон">
+            <div class="card__square">
+              <img class="card__image" src="./images/card-bukchon.jpg" alt="Деревня Букчон">
+            </div>
             <figcaption class="card__caption">
               <p class="card__text">Деревня Букчон</p>
               <button class="card__like-button button"></button>
             </figcaption>
           </figure>
           <figure class="card">
-            <img class="card__image" src="./images/card-chkhandokkun.jpg" alt="Дворцовый комплекс Чхандоккун">
+            <div class="card__square">
+              <img class="card__image" src="./images/card-chkhandokkun.jpg" alt="Дворцовый комплекс Чхандоккун">
+            </div>
             <figcaption class="card__caption">
               <p class="card__text">Чхандоккун</p>
               <button class="card__like-button button"></button>
             </figcaption>
           </figure>
           <figure class="card">
-            <img class="card__image" src="./images/card-chkhongechkhon.jpg" alt="Парк Чхонгечхон">
+            <div class="card__square">
+              <img class="card__image" src="./images/card-chkhongechkhon.jpg" alt="Парк Чхонгечхон">
+            </div>
             <figcaption class="card__caption">
               <p class="card__text">Парк Чхонгечхон</p>
               <button class="card__like-button button"></button>
             </figcaption>
           </figure>
           <figure class="card">
-            <img class="card__image" src="./images/card-chogesa.jpg" alt="Храм Чогеса">
+            <div class="card__square">
+              <img class="card__image" src="./images/card-chogesa.jpg" alt="Храм Чогеса">
+            </div>
             <figcaption class="card__caption">
               <p class="card__text">Храм Чогеса</p>
               <button class="card__like-button button"></button>
             </figcaption>
           </figure>
           <figure class="card">
-            <img class="card__image" src="./images/card-namsan.jpg" alt="Парк Намсан">
+            <div class="card__square">
+              <img class="card__image" src="./images/card-namsan.jpg" alt="Парк Намсан">
+            </div>
             <figcaption class="card__caption">
               <p class="card__text">Парк Намсан</p>
               <button class="card__like-button button"></button>
             </figcaption>
           </figure>
           <figure class="card">
-            <img class="card__image" src="./images/card-pukhansan.jpg" alt="Национальный парк Пукхансан">
+            <div class="card__square">
+              <img class="card__image" src="./images/card-pukhansan.jpg" alt="Национальный парк Пукхансан">
+              </div>
             <figcaption class="card__caption">
               <p class="card__text">Национальный парк Пукхансан</p>
               <button class="card__like-button button"></button>
@@ -73,7 +86,7 @@
         </section>
       </main>
       <footer class="footer">&copy; 2022 Mesto Russia</footer>
-      <div class="popup">
+      <section class="popup">
         <div class="popup__container">
           <button class="popup__close-button button"></button>
           <form class="popup__form">
@@ -93,7 +106,7 @@
             <button class="popup__submit-button button" type="submit">Сохранить</button>
           </form>
         </div>
-      </div>
+      </section>
     </div>
     <script src="./scripts/index.js"></script>
   </body>
