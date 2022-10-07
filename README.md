@@ -17,4 +17,4 @@
 1. Кроссбраузерная поддержка 🔜
 
 ## Ссылка на проект
-[Место](https://PeachMood.github.io/russian-travel/index.html)
+[Место](https://PeachMood.github.io/mesto/index.html)
