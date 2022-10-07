@@ -4,8 +4,8 @@
 /*Шрифты*/
 @import url(../vendor/fonts/fonts.css);
 
-/*Общий стиль для элементов при наведении*/
-@import url(../blocks/translucent-on-hover/translucent-on-hover.css);
+/*Общий стиль для кнопок*/
+@import url(../blocks/button/button.css);
 
 /*Стили для блока page*/
 @import url(../blocks/page/page.css);
@@ -41,3 +41,12 @@
 
 /*Стили для блока footer*/
 @import url(../blocks/footer/footer.css);
+
+/*Стили для блока popup*/
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/_opened/popup_opened.css);
+@import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/popup/__close-button/popup__close-button.css);
+@import url(../blocks/popup/__title/popup__title.css);
+@import url(../blocks/popup/__input/popup__input.css);
+@import url(../blocks/popup/__submit-button/popup__submit-button.css);

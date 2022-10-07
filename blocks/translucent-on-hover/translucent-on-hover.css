@@ -1,7 +1,0 @@
-.translucent-on-hover {
-  transition: opacity linear .3s;
-}
-
-.translucent-on-hover:hover {
-  opacity: .6;
-}
