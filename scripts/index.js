@@ -9,7 +9,13 @@ const formElement = document.querySelector('.popup__form');
 const nameInput = formElement.querySelector('.popup__input_type_name');
 const jobInput = formElement.querySelector('.popup__input_type_job');
 
+const profileElement = document.querySelector('.profile');
+const nameTitle = profileElement.querySelector('.profile__name');
+const jobTitle = profileElement.querySelector('.profile__job');
+
 function editProfileHandler() {
+  nameInput.value = nameTitle.textContent;
+  jobInput.value = jobTitle.textContent;
   popupElement.classList.add(POPUP_OPENED_CLASS);
 }
 
@@ -22,15 +28,8 @@ function closePopupHandler(event) {
 function formSubmitHandler(event) {
   event.preventDefault();
 
-  const name = nameInput.value;
-  const job = jobInput.value;
-
-  const profileElement = document.querySelector('.profile');
-  const nameTitle = profileElement.querySelector('.profile__name');
-  const jobTitle = profileElement.querySelector('.profile__job');
-
-  nameTitle.textContent = name;
-  jobTitle.textContent = job;
+  nameTitle.textContent = nameInput.value;
+  jobTitle.textContent = jobInput.value;
 
   popupElement.classList.remove(POPUP_OPENED_CLASS);
 }
