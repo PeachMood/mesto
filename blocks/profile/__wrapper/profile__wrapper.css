@@ -5,6 +5,12 @@
   margin-bottom: 8px;
 }
 
+@media screen and (max-width: 720px) {
+  .profile__wrapper {
+    justify-content: center;
+  }
+}
+
 @media screen and (max-width: 480px) {
   .profile__wrapper {
     gap: 10px;

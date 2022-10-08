@@ -1,7 +1,7 @@
 .profile__container {
   display: flex;
   align-items: center;
-  max-width: calc(100% - 175px);
+  max-width: calc(100% - 185px);
   min-width: 0;
   gap: 30px;
 }

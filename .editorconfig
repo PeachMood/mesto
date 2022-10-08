@@ -1,0 +1,88 @@
+Skip to content
+Search or jump to…
+Pulls
+Issues
+Marketplace
+Explore
+
+@PeachMood
+PeachMood
+/
+how-to-learn
+Private
+generated from yandex-praktikum/how-to-learn
+Code
+Issues
+Pull requests
+Actions
+Projects
+Security
+More
+how-to-learn/.editorconfig
+@PeachMood
+PeachMood Initial commit
+Latest commit 8fa793d on 4 Aug
+ History
+ 1 contributor
+45 lines (23 sloc)  795 Bytes
+
+# http://editorconfig.org
+
+
+# A special property that should be specified at the top of the file outside of
+
+# any sections. Set to true to stop .editor config file search on current file
+
+root = true
+
+[*]
+# Indentation style
+
+# Possible values - tab, space
+
+indent_style = space
+
+# Indentation size in single-spaced characters
+
+# Possible values - an integer, tab
+
+indent_size = 2
+
+# Line ending file format
+
+# Possible values - lf, crlf, cr
+
+end_of_line = lf
+
+# File character encoding
+
+# Possible values - latin1, utf-8, utf-16be, utf-16le
+
+charset = utf-8
+
+# Denotes whether to trim whitespace at the end of lines
+
+# Possible values - true, false
+
+trim_trailing_whitespace = true
+
+# Denotes whether file should end with a newline
+
+# Possible values - true, false
+
+insert_final_newline = true
+Footer
+© 2022 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
+You have no unread notifications

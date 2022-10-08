@@ -30,6 +30,7 @@
 
 /*Стили для блока cards*/
 @import url(../blocks/cards/cards.css);
+@import url(../blocks/cards/__list/cards__list.css);
 
 /*Стили для блока card*/
 @import url(../blocks/card/card.css);
@@ -41,6 +42,7 @@
 
 /*Стили для блока footer*/
 @import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__copyright/footer__copyright.css);
 
 /*Стили для блока popup*/
 @import url(../blocks/popup/popup.css);
