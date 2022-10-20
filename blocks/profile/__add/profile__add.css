@@ -1,4 +1,4 @@
-.profile__add-button {
+.profile__add {
   flex-shrink: 0;
   background: url(../../../images/profile-plus-icon.svg) center no-repeat;
   background-size: 22px;
@@ -11,12 +11,12 @@
   transition: opacity linear .3s;
 }
 
-.profile__add-button:hover {
+.profile__add:hover {
   opacity: .6;
 }
 
 @media screen and (max-width: 720px) {
-  .profile__add-button {
+  .profile__add {
     background-size: 16px;
     width: 282px;
   }

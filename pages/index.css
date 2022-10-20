@@ -24,9 +24,9 @@
 @import url(../blocks/profile/__info/profile__info.css);
 @import url(../blocks/profile/__wrapper/profile__wrapper.css);
 @import url(../blocks/profile/__name/profile__name.css);
-@import url(../blocks/profile/__edit-button/profile__edit-button.css);
+@import url(../blocks/profile/__edit/profile__edit.css);
 @import url(../blocks/profile/__job/profile__job.css);
-@import url(../blocks/profile/__add-button/profile__add-button.css);
+@import url(../blocks/profile/__add/profile__add.css);
 
 /*Стили для блока cards*/
 @import url(../blocks/cards/cards.css);
@@ -34,11 +34,12 @@
 
 /*Стили для блока card*/
 @import url(../blocks/card/card.css);
+@import url(../blocks/card/__delete/card__delete.css);
 @import url(../blocks/card/__square/card__square.css);
 @import url(../blocks/card/__image/card__image.css);
 @import url(../blocks/card/__caption/card__caption.css);
 @import url(../blocks/card/__text/card__text.css);
-@import url(../blocks/card/__like-button/card__like-button.css);
+@import url(../blocks/card/__like/card__like.css);
 
 /*Стили для блока footer*/
 @import url(../blocks/footer/footer.css);
@@ -48,7 +49,7 @@
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__container/popup__container.css);
-@import url(../blocks/popup/__close-button/popup__close-button.css);
+@import url(../blocks/popup/__close/popup__close.css);
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/__input/popup__input.css);
-@import url(../blocks/popup/__submit-button/popup__submit-button.css);
+@import url(../blocks/popup/__submit/popup__submit.css);

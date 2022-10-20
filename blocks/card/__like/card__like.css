@@ -1,6 +1,6 @@
-.card__like-button {
+.card__like {
   flex-shrink: 0;
-  background: url(.././../../images/card-heart-icon.svg) center no-repeat;
+  background: url(.././../../images/card-heart-icon.svg) center / contain no-repeat;
   width: 22px;
   height: 19px;
   cursor: pointer;
@@ -10,6 +10,6 @@
   transition: opacity linear .3s;
 }
 
-.card__like-button:hover {
+.card__like:hover {
   opacity: .5;
 }

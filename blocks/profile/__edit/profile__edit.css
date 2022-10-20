@@ -1,4 +1,4 @@
-.profile__edit-button {
+.profile__edit {
   flex-shrink: 0;
   background: url(../../../images/profile-pencil-icon.svg) center / 10px no-repeat;
   border: 1px solid #fff;
@@ -10,12 +10,12 @@
   transition: opacity linear .3s;
 }
 
-.profile__edit-button:hover {
+.profile__edit:hover {
   opacity: .6;
 }
 
 @media screen and (max-width: 480px) {
-  .profile__edit-button {
+  .profile__edit {
     background-size: 7.5px;
     width: 18px;
     height: 18px;
