@@ -129,6 +129,25 @@
           </form>
         </div>
       </section>
+      <section class="popup">
+        <div class="popup__container">
+          <button class="popup__close button" type="button"></button>
+          <form name="popup-form" class="popup__form">
+            <h2 class="popup__title">Новое место</h2>
+            <input
+              required
+              name="place"
+              class="popup__input popup__input_type_place"
+              placeholder="Название">
+            <input
+              required
+              name="link"
+              class="popup__input popup__input_type_link"
+              placeholder="Ссылка на картинку">
+            <button class="popup__submit button" type="submit">Создать</button>
+          </form>
+        </div>
+      </section>
     </div>
     <script src="./scripts/index.js"></script>
   </body>
