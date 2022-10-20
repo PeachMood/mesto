@@ -40,6 +40,7 @@
 @import url(../blocks/card/__caption/card__caption.css);
 @import url(../blocks/card/__text/card__text.css);
 @import url(../blocks/card/__like/card__like.css);
+@import url(../blocks/card/__like/_active/card__like_active.css);
 
 /*Стили для блока footer*/
 @import url(../blocks/footer/footer.css);
