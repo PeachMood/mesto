@@ -108,44 +108,55 @@
       <footer class="footer">
         <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
       </footer>
-      <section class="popup">
+      <section class="popup popup_type_profile">
         <div class="popup__container">
           <button class="popup__close button" type="button"></button>
-          <form name="popup-form" class="popup__form">
-            <h2 class="popup__title">Редактировать профиль</h2>
+          <form name="form" class="form">
+            <h2 class="form__title">Редактировать профиль</h2>
             <input
               required
               name="name"
-              class="popup__input popup__input_type_name"
+              class="form__input form__input_type_name"
               placeholder="Ваше имя"
               value="Жак-Ив Кусто">
             <input
               required
               name="job"
-              class="popup__input popup__input_type_job"
+              class="form__input form__input_type_job"
               placeholder="Расскажите о себе"
               value="Поклонник Южной Кореи">
-            <button class="popup__submit button" type="submit">Сохранить</button>
+            <button class="form__submit button" type="submit">Сохранить</button>
           </form>
         </div>
       </section>
-      <section class="popup">
+      <section class="popup popup_type_card">
         <div class="popup__container">
           <button class="popup__close button" type="button"></button>
-          <form name="popup-form" class="popup__form">
-            <h2 class="popup__title">Новое место</h2>
+          <form name="form" class="form">
+            <h2 class="form__title">Новое место</h2>
             <input
               required
               name="place"
-              class="popup__input popup__input_type_place"
+              class="form__input form__input_type_place"
               placeholder="Название">
             <input
               required
               name="link"
-              class="popup__input popup__input_type_link"
+              class="form__input form__input_type_link"
               placeholder="Ссылка на картинку">
-            <button class="popup__submit button" type="submit">Создать</button>
+            <button class="form__submit button" type="submit">Создать</button>
           </form>
+        </div>
+      </section>
+      <section class="popup popup_opened popup_type_figure">
+        <div class="popup__container">
+          <button class="popup__close button" type="button"></button>
+          <figure class="figure">
+            <img class="figure__image" src="./images/card-bukchon.jpg">
+            <figcaption class="figure__caption">
+              <h2 class="figure__text">Деревня Букчон многобуковок многобуковок многобуковок многобуковок многобуковок многобуковок многобуковок многобуковок многобуковок многобуковок многобуковок многобуковок многобуковок многобуковок многобуковок многобуковок многобуковок многобуковок</h2>
+            </figcaption>
+          </figure>
         </div>
       </section>
     </div>
