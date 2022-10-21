@@ -5,9 +5,9 @@ const popupElement = document.querySelector('.popup');
 const popupContainer = popupElement.querySelector('.popup__container');
 const closePopupButton = popupElement.querySelector('.popup__close');
 
-const formElement = document.querySelector('.popup__form');
-const nameInput = formElement.querySelector('.popup__input_type_name');
-const jobInput = formElement.querySelector('.popup__input_type_job');
+const formElement = document.querySelector('.form');
+const nameInput = formElement.querySelector('.form__input_name');
+const jobInput = formElement.querySelector('.form__input_job');
 
 const profileElement = document.querySelector('.profile');
 const nameTitle = profileElement.querySelector('.profile__name');
