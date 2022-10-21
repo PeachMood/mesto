@@ -49,6 +49,8 @@
 /*Стили для блока popup*/
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
+@import url(../blocks/popup/_background/popup_background_light.css);
+@import url(../blocks/popup/_background/popup_background_dark.css);
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__close/popup__close.css);
 
@@ -61,5 +63,6 @@
 /*Стили для блока figure*/
 @import url(../blocks/figure/figure.css);
 @import url(../blocks/figure/__image/figure__image.css);
+@import url(../blocks/figure/__image/_size/figure__image_size_large.css);
 @import url(../blocks/figure/__caption/figure__caption.css);
 @import url(../blocks/figure/__text/figure__text.css);
