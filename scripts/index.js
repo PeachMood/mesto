@@ -1,3 +1,4 @@
+const POPUP_HIDDEN_CLASS = 'popup_hidden';
 const POPUP_OPENED_CLASS = 'popup_opened';
 const LIKE_BUTTON_ACTIVE_CLASS = 'card__like_active';
 
@@ -32,6 +33,22 @@ const initialCards = [
   {place: 'Парк Намсан', link: './images/card-namsan.jpg'},
   {place: 'Национальный парк Пукхансан', link: './images/card-pukhansan.jpg'}
 ];
+
+//Предотвращает преждевременное отображение попапов
+function showPopup(popup) {
+  popup.classList.remove(POPUP_HIDDEN_CLASS);
+}
+
+function loadCards() {
+  initialCards.forEach(card => renderCard(card, cardsContainer));
+}
+
+function loadPage() {
+  showPopup(profilePopup);
+  showPopup(cardPopup);
+  showPopup(figurePopup);
+  loadCards();
+}
 
 function openPopup(popup) {
   popup.classList.add(POPUP_OPENED_CLASS);
@@ -91,7 +108,6 @@ function createCard(card) {
   cardDeleteButton.addEventListener('click', deleteCard);
   cardImage.src = card.link;
   cardImage.alt = card.place;
-  console.log(cardImage.alt);
   cardImage.addEventListener('click', openFigurePopup);
   cardText.textContent = card.place;
   cardLikeButton.addEventListener('click', likeCard);
@@ -101,7 +117,7 @@ function createCard(card) {
 
 function renderCard(card, container) {
   const cardElement = createCard(card);
-  container.append(cardElement);
+  container.prepend(cardElement);
 }
 
 function editProfile(event) {
@@ -122,6 +138,8 @@ function addCard(event) {
   closePopup(event, cardPopup);
 }
 
+window.addEventListener('load', loadPage);
+
 profilePopup.addEventListener('click', event => closePopup(event, profilePopup));
 cardPopup.addEventListener('click', event => closePopup(event, cardPopup));
 figurePopup.addEventListener('click', event => closePopup(event, figurePopup));
@@ -131,5 +149,3 @@ addCardButton.addEventListener('click', openCardPopup);
 
 profileForm.addEventListener('submit', editProfile);
 cardForm.addEventListener('submit', addCard);
-
-initialCards.forEach(card => renderCard(card, cardsContainer));
