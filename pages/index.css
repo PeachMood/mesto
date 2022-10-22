@@ -30,7 +30,7 @@
 
 /*Стили для блока cards*/
 @import url(../blocks/cards/cards.css);
-@import url(../blocks/cards/__list/cards__list.css);
+@import url(../blocks/cards/__container/cards__container.css);
 
 /*Стили для блока card*/
 @import url(../blocks/card/card.css);

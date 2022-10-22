@@ -29,79 +29,7 @@
           <button class="profile__add button" type="button"></button>
         </section>
         <section class="cards">
-          <ul class="cards__list">
-            <li>
-              <figure class="card">
-                <button class="card__delete button" type="button"></button>
-                <div class="card__square">
-                  <img class="card__image" src="./images/card-bukchon.jpg" alt="Деревня Букчон">
-                </div>
-                <figcaption class="card__caption">
-                  <h2 class="card__text">Деревня Букчон</h2>
-                  <button class="card__like button" type="button"></button>
-                </figcaption>
-              </figure>
-            </li>
-            <li>
-              <figure class="card">
-                <button class="card__delete button" type="button"></button>
-                <div class="card__square">
-                  <img class="card__image" src="./images/card-chkhandokkun.jpg" alt="Дворцовый комплекс Чхандоккун">
-                </div>
-                <figcaption class="card__caption">
-                  <h2 class="card__text">Чхандоккун</h2>
-                  <button class="card__like button" type="button"></button>
-                </figcaption>
-              </figure>
-            </li>
-            <li>
-              <figure class="card">
-                <button class="card__delete button" type="button"></button>
-                <div class="card__square">
-                  <img class="card__image" src="./images/card-chkhongechkhon.jpg" alt="Парк Чхонгечхон">
-                </div>
-                <figcaption class="card__caption">
-                  <h2 class="card__text">Парк Чхонгечхон</h2>
-                  <button class="card__like button" type="button"></button>
-                </figcaption>
-              </figure>
-            </li>
-            <li>
-              <figure class="card">
-                <button class="card__delete button" type="button"></button>
-                <div class="card__square">
-                  <img class="card__image" src="./images/card-chogesa.jpg" alt="Храм Чогеса">
-                </div>
-                <figcaption class="card__caption">
-                  <h2 class="card__text">Храм Чогеса</h2>
-                  <button class="card__like button" type="button"></button>
-                </figcaption>
-              </figure>
-            </li>
-            <li>
-              <figure class="card">
-                <button class="card__delete button" type="button"></button>
-                <div class="card__square">
-                  <img class="card__image" src="./images/card-namsan.jpg" alt="Парк Намсан">
-                </div>
-                <figcaption class="card__caption">
-                  <h2 class="card__text">Парк Намсан</h2>
-                  <button class="card__like button" type="button"></button>
-                </figcaption>
-              </figure>
-            </li>
-            <li>
-              <figure class="card">
-                <button class="card__delete button" type="button"></button>
-                <div class="card__square">
-                  <img class="card__image" src="./images/card-pukhansan.jpg" alt="Национальный парк Пукхансан">
-                  </div>
-                <figcaption class="card__caption">
-                  <h2 class="card__text">Национальный парк Пукхансан</h2>
-                  <button class="card__like button" type="button"></button>
-                </figcaption>
-              </figure>
-            </li>
+          <ul class="cards__container">
           </ul>
         </section>
       </main>
@@ -152,7 +80,7 @@
         <div class="popup__container">
           <button class="popup__close button" type="button"></button>
           <figure class="figure">
-            <img class="figure__image figure__image_size_large">
+            <img class="figure__image figure__image_size_large" src="#" alt="#">
             <figcaption class="figure__caption">
               <h2 class="figure__text"></h2>
             </figcaption>
@@ -160,6 +88,20 @@
         </div>
       </section>
     </div>
+    <template id="card-template">
+      <li class="card__element">
+        <figure class="card">
+          <button class="card__delete button" type="button"></button>
+          <div class="card__square">
+            <img class="card__image" src="#" alt="#">
+          </div>
+          <figcaption class="card__caption">
+            <h2 class="card__text"></h2>
+            <button class="card__like button" type="button"></button>
+          </figcaption>
+        </figure>
+      </li>
+    </template>
     <script src="./scripts/index.js"></script>
   </body>
 </html>
