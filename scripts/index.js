@@ -6,35 +6,31 @@ const cardsContainer=  document.querySelector('.cards__container');
 const cardTemplate = document.querySelector('#card-template').content;
 
 const profile = document.querySelector('.profile');
-const editProfileButton = profile.querySelector('.profile__edit');
-const addCardButton = profile.querySelector('.profile__add');
+const buttonEditProfile = profile.querySelector('.profile__edit');
+const buttonAddCard = profile.querySelector('.profile__add');
 const nameTitle = profile.querySelector('.profile__name');
 const jobTitle = profile.querySelector('.profile__job');
 
 const profilePopup = document.querySelector('.popup_profile');
+const profilePopupContainer = profilePopup.querySelector('.popup__container');
+const profilePopupButtonClose = profilePopup.querySelector('.popup__close');
 const profileForm = profilePopup.querySelector('.form');
 const nameInput = profileForm.querySelector('.form__input_name');
 const jobInput = profileForm.querySelector('.form__input_job');
 
 const cardPopup = document.querySelector('.popup_card');
+const cardPopupContainer = cardPopup.querySelector('.popup__container');
+const cardPopupButtonClose = cardPopup.querySelector('.popup__close');
 const cardForm = cardPopup.querySelector('.form');
 const placeInput = cardForm.querySelector('.form__input_place');
 const linkInput = cardForm.querySelector('.form__input_link');
 
 const figurePopup = document.querySelector('.popup_figure');
+const figurePopupContainer = figurePopup.querySelector('.popup__container');
+const figurePopupButtonClose = figurePopup.querySelector('.popup__close');
 const figureImage = figurePopup.querySelector('.figure__image');
 const figureText = figurePopup.querySelector('.figure__text');
 
-const initialCards = [
-  {place: 'Деревня Букчон', link: './images/card-bukchon.jpg'},
-  {place: 'Чхандоккун', link: './images/card-chkhandokkun.jpg'},
-  {place: 'Парк Чхонгечхон', link: './images/card-chkhongechkhon.jpg'},
-  {place: 'Храм Чогеса', link: './images/card-chogesa.jpg'},
-  {place: 'Парк Намсан', link: './images/card-namsan.jpg'},
-  {place: 'Национальный парк Пукхансан', link: './images/card-pukhansan.jpg'}
-];
-
-//Предотвращает преждевременное отображение попапов
 function showPopup(popup) {
   popup.classList.remove(POPUP_HIDDEN_CLASS);
 }
@@ -43,41 +39,55 @@ function loadCards() {
   initialCards.forEach(card => renderCard(card, cardsContainer));
 }
 
-function loadPage() {
+function handleWindowLoad() {
   showPopup(profilePopup);
   showPopup(cardPopup);
   showPopup(figurePopup);
   loadCards();
 }
 
+function closePopup(popup) {
+  popup.classList.remove(POPUP_OPENED_CLASS);
+}
+
+function handleCloseClick(event, popup, popupContainer, popupButtonClose) {
+  if (!popupContainer.contains(event.target) || event.target === popupButtonClose) {
+    closePopup(popup);
+  }
+}
+
 function openPopup(popup) {
   popup.classList.add(POPUP_OPENED_CLASS);
 }
 
-function closePopup(event, popup) {
-  const popupContainer = popup.querySelector('.popup__container');
-  const closePopupButton = popup.querySelector('.popup__close');
-
-  if (!popupContainer.contains(event.target) || event.target === closePopupButton || event.type === 'submit') {
-    popup.classList.remove(POPUP_OPENED_CLASS);
-  }
-}
-
-function openProfilePopup() {
+function handleEditClick() {
   nameInput.value = nameTitle.textContent;
   jobInput.value = jobTitle.textContent;
 
   openPopup(profilePopup);
 }
 
-function openCardPopup() {
-  placeInput.value = '';
-  linkInput.value = '';
+function handleAddClick() {
+  cardForm.reset();
 
   openPopup(cardPopup);
 }
 
-function openFigurePopup(event) {
+function handleProfileFormSubmit(event) {
+  event.preventDefault();
+
+  nameTitle.textContent = nameInput.value;
+  jobTitle.textContent = jobInput.value;
+
+  closePopup(profilePopup);
+}
+
+function handleDeleteClick(event) {
+  const cardElement = event.target.closest('.card__element');
+  cardElement.remove();
+}
+
+function handleImageClick(event) {
   const cardImage = event.target;
   const cardElement = cardImage.closest('.card__element');
   const cardText = cardElement.querySelector('.card__text');
@@ -89,12 +99,7 @@ function openFigurePopup(event) {
   openPopup(figurePopup);
 }
 
-function deleteCard(event) {
-  const cardElement = event.target.closest('.card__element');
-  cardElement.remove();
-}
-
-function likeCard(event) {
+function handleLikeClick(event) {
   event.target.classList.toggle(LIKE_BUTTON_ACTIVE_CLASS);
 }
 
@@ -105,12 +110,12 @@ function createCard(card) {
   const cardText = cardElement.querySelector('.card__text');
   const cardLikeButton = cardElement.querySelector('.card__like');
 
-  cardDeleteButton.addEventListener('click', deleteCard);
+  cardDeleteButton.addEventListener('click', handleDeleteClick);
   cardImage.src = card.link;
   cardImage.alt = card.place;
-  cardImage.addEventListener('click', openFigurePopup);
+  cardImage.addEventListener('click', handleImageClick);
   cardText.textContent = card.place;
-  cardLikeButton.addEventListener('click', likeCard);
+  cardLikeButton.addEventListener('click', handleLikeClick);
 
   return cardElement;
 }
@@ -120,32 +125,23 @@ function renderCard(card, container) {
   container.prepend(cardElement);
 }
 
-function editProfile(event) {
-  event.preventDefault();
-
-  nameTitle.textContent = nameInput.value;
-  jobTitle.textContent = jobInput.value;
-
-  closePopup(event, profilePopup);
-}
-
-function addCard(event) {
+function handleCardFormSubmit(event) {
   event.preventDefault();
 
   const card = {place: placeInput.value, link: linkInput.value};
   renderCard(card, cardsContainer);
 
-  closePopup(event, cardPopup);
+  closePopup(cardPopup);
 }
 
-window.addEventListener('load', loadPage);
+window.addEventListener('load', handleWindowLoad);
 
-profilePopup.addEventListener('click', event => closePopup(event, profilePopup));
-cardPopup.addEventListener('click', event => closePopup(event, cardPopup));
-figurePopup.addEventListener('click', event => closePopup(event, figurePopup));
+profilePopup.addEventListener('click', event => handleCloseClick(event, profilePopup, profilePopupContainer, profilePopupButtonClose));
+cardPopup.addEventListener('click', event => handleCloseClick(event, cardPopup, cardPopupContainer, cardPopupButtonClose));
+figurePopup.addEventListener('click', event => handleCloseClick(event, figurePopup, figurePopupContainer, figurePopupButtonClose));
 
-editProfileButton.addEventListener('click', openProfilePopup);
-addCardButton.addEventListener('click', openCardPopup);
+buttonEditProfile.addEventListener('click', handleEditClick);
+buttonAddCard.addEventListener('click', handleAddClick);
 
-profileForm.addEventListener('submit', editProfile);
-cardForm.addEventListener('submit', addCard);
+profileForm.addEventListener('submit', handleProfileFormSubmit);
+cardForm.addEventListener('submit', handleCardFormSubmit);
