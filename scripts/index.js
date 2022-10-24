@@ -50,9 +50,9 @@ function closePopup(popup) {
   popup.classList.remove(POPUP_OPENED_CLASS);
 }
 
-function handleCloseClick(event, popup, popupContainer, popupButtonClose) {
-  if (!popupContainer.contains(event.target) || event.target === popupButtonClose) {
-    closePopup(popup);
+function handleCloseClick(event) {
+  if (event.target === event.currentTarget || event.target.classList.contains('popup__close')) {
+    closePopup(event.currentTarget)
   }
 }
 
@@ -136,9 +136,9 @@ function handleCardFormSubmit(event) {
 
 window.addEventListener('load', handleWindowLoad);
 
-profilePopup.addEventListener('click', event => handleCloseClick(event, profilePopup, profilePopupContainer, profilePopupButtonClose));
-cardPopup.addEventListener('click', event => handleCloseClick(event, cardPopup, cardPopupContainer, cardPopupButtonClose));
-figurePopup.addEventListener('click', event => handleCloseClick(event, figurePopup, figurePopupContainer, figurePopupButtonClose));
+profilePopup.addEventListener('click', event => handleCloseClick(event));
+cardPopup.addEventListener('click', event => handleCloseClick(event));
+figurePopup.addEventListener('click', event => handleCloseClick(event));
 
 buttonEditProfile.addEventListener('click', handleEditClick);
 buttonAddCard.addEventListener('click', handleAddClick);
