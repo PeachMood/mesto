@@ -43,21 +43,23 @@
             <h2 class="form__title">Редактировать профиль</h2>
             <label class="form__field">
               <input
-                required
+                id="name"
                 name="name"
-                class="form__input form__input_name"
+                class="form__input"
                 placeholder="Ваше имя"
-                value="Жак-Ив Кусто">
-              <span class="form__error"></span>
+                value="Жак-Ив Кусто"
+                required>
+              <span class="form__error form__error_name"></span>
             </label>
             <label class="form__field">
               <input
-                required
+                id="job"
                 name="job"
-                class="form__input form__input_job"
+                class="form__input"
                 placeholder="Расскажите о себе"
-                value="Поклонник Южной Кореи">
-              <span class="form__error"></span>
+                value="Поклонник Южной Кореи"
+                required>
+              <span class="form__error form__error_job"></span>
             </label>
             <button class="form__submit button" type="submit">Сохранить</button>
           </form>
@@ -68,20 +70,20 @@
           <button class="popup__close button" type="button"></button>
           <form name="card" class="form" novalidate>
             <h2 class="form__title">Новое место</h2>
-            <label class="form__field"> 
+            <label class="form__field">
               <input
-                required
+                id="place"
                 name="place"
-                class="form__input form__input_place"
+                class="form__input"
                 placeholder="Название">
               <span class="form__error"></span>
             </label>
             <label class="form__field">
               <input
-                required
+                id="link"
                 name="link"
                 type="url"
-                class="form__input form__input_link"
+                class="form__input"
                 placeholder="Ссылка на картинку">
               <span class="form__error"></span>
             </label>

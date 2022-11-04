@@ -13,13 +13,13 @@ const jobTitle = profile.querySelector('.profile__job');
 
 const profilePopup = document.querySelector('.popup_profile');
 const profileForm = profilePopup.querySelector('.form');
-const nameInput = profileForm.querySelector('.form__input_name');
-const jobInput = profileForm.querySelector('.form__input_job');
+const nameInput = profileForm.querySelector('#name');
+const jobInput = profileForm.querySelector('#job');
 
 const cardPopup = document.querySelector('.popup_card');
 const cardForm = cardPopup.querySelector('.form');
-const placeInput = cardForm.querySelector('.form__input_place');
-const linkInput = cardForm.querySelector('.form__input_link');
+const placeInput = cardForm.querySelector('#place');
+const linkInput = cardForm.querySelector('#link');
 
 const figurePopup = document.querySelector('.popup_figure');
 const figureImage = figurePopup.querySelector('.figure__image');

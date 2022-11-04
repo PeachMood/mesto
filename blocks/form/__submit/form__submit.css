@@ -16,13 +16,6 @@
   opacity: .8;
 }
 
-.form__submit:disabled {
-  background-color: transparent;
-  border: 1px solid #000;
-  color: #000;
-  opacity: .2;
-}
-
 @media screen and (max-width: 480px) {
   .form__submit {
     height: 46px;

@@ -60,8 +60,10 @@
 @import url(../blocks/form/__title/form__title.css);
 @import url(../blocks/form/__field/form__field.css);
 @import url(../blocks/form/__input/form__input.css);
+@import url(../blocks/form/__input/_invalid/form__input_invalid.css);
 @import url(../blocks/form/__error/form__error.css);
 @import url(../blocks/form/__submit/form__submit.css);
+@import url(../blocks/form/__submit/_disabled/form__submit_disabled.css);
 
 /*Стили для блока figure*/
 @import url(../blocks/figure/figure.css);

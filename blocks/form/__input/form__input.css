@@ -15,8 +15,3 @@
 .form__input:focus {
   border-bottom: solid #000;
 }
-
-.form__input:invalid {
-  border-bottom: solid #FF0000;
-}
-
