@@ -39,20 +39,26 @@
       <section class="popup popup_profile popup_hidden popup_background_light">
         <div class="popup__container">
           <button class="popup__close button" type="button"></button>
-          <form name="profile" class="form">
+          <form name="profile" class="form" novalidate>
             <h2 class="form__title">Редактировать профиль</h2>
-            <input
-              required
-              name="name"
-              class="form__input form__input_name"
-              placeholder="Ваше имя"
-              value="Жак-Ив Кусто">
-            <input
-              required
-              name="job"
-              class="form__input form__input_job"
-              placeholder="Расскажите о себе"
-              value="Поклонник Южной Кореи">
+            <label class="form__field">
+              <input
+                required
+                name="name"
+                class="form__input form__input_name"
+                placeholder="Ваше имя"
+                value="Жак-Ив Кусто">
+              <span class="form__error"></span>
+            </label>
+            <label class="form__field">
+              <input
+                required
+                name="job"
+                class="form__input form__input_job"
+                placeholder="Расскажите о себе"
+                value="Поклонник Южной Кореи">
+              <span class="form__error"></span>
+            </label>
             <button class="form__submit button" type="submit">Сохранить</button>
           </form>
         </div>
@@ -60,19 +66,25 @@
       <section class="popup popup_card popup_hidden popup_background_light">
         <div class="popup__container">
           <button class="popup__close button" type="button"></button>
-          <form name="card" class="form">
+          <form name="card" class="form" novalidate>
             <h2 class="form__title">Новое место</h2>
-            <input
-              required
-              name="place"
-              class="form__input form__input_place"
-              placeholder="Название">
-            <input
-              required
-              name="link"
-              type="url"
-              class="form__input form__input_link"
-              placeholder="Ссылка на картинку">
+            <label class="form__field"> 
+              <input
+                required
+                name="place"
+                class="form__input form__input_place"
+                placeholder="Название">
+              <span class="form__error"></span>
+            </label>
+            <label class="form__field">
+              <input
+                required
+                name="link"
+                type="url"
+                class="form__input form__input_link"
+                placeholder="Ссылка на картинку">
+              <span class="form__error"></span>
+            </label>
             <button class="form__submit button" type="submit">Создать</button>
           </form>
         </div>

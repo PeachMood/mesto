@@ -58,7 +58,9 @@
 /*Стили для блока form*/
 @import url(../blocks/form/form.css);
 @import url(../blocks/form/__title/form__title.css);
+@import url(../blocks/form/__field/form__field.css);
 @import url(../blocks/form/__input/form__input.css);
+@import url(../blocks/form/__error/form__error.css);
 @import url(../blocks/form/__submit/form__submit.css);
 
 /*Стили для блока figure*/
