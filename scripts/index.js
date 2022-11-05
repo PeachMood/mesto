@@ -13,17 +13,27 @@ const jobTitle = profile.querySelector('.profile__job');
 
 const profilePopup = document.querySelector('.popup_profile');
 const profileForm = profilePopup.querySelector('.form');
-const nameInput = profileForm.querySelector('#name');
-const jobInput = profileForm.querySelector('#job');
+const nameInput = profileForm.querySelector('#name-input');
+const jobInput = profileForm.querySelector('#job-input');
+const profileSubmitButton = profileForm.querySelector('.form__submit');
 
 const cardPopup = document.querySelector('.popup_card');
 const cardForm = cardPopup.querySelector('.form');
-const placeInput = cardForm.querySelector('#place');
-const linkInput = cardForm.querySelector('#link');
+const placeInput = cardForm.querySelector('#place-input');
+const linkInput = cardForm.querySelector('#link-input');
+const cardSubmitButton = cardForm.querySelector('.form__submit');
 
 const figurePopup = document.querySelector('.popup_figure');
 const figureImage = figurePopup.querySelector('.figure__image');
 const figureText = figurePopup.querySelector('.figure__text');
+
+const validationOptions = {
+  formSelector: '.form',
+  inputSelector: '.form__input',
+  buttonSelector: '.form__submit',
+  disabledButtonClass: 'form__submit_disabled',
+  inputErrorClass: 'form__input_invalid',
+};
 
 function showPopup(popup) {
   popup.classList.remove(POPUP_HIDDEN_CLASS);
@@ -38,6 +48,7 @@ function handleWindowLoad() {
   showPopup(cardPopup);
   showPopup(figurePopup);
   loadCards();
+  enableValidation(validationOptions);
 }
 
 function closePopup(popup) {
@@ -57,11 +68,17 @@ function openPopup(popup) {
 function handleEditClick() {
   nameInput.value = nameTitle.textContent;
   jobInput.value = jobTitle.textContent;
+  
+  const profileFormInputElements = [nameInput, jobInput];
+  resetFormValidation(profileForm, profileFormInputElements, validationOptions.inputErrorClass, profileSubmitButton, validationOptions.disabledButtonClass);
   openPopup(profilePopup);
 }
 
 function handleAddClick() {
   cardForm.reset();
+  
+  const cardFormInputElements = [placeInput, linkInput];
+  resetFormValidation(cardForm, cardFormInputElements, validationOptions.inputErrorClass, cardSubmitButton, validationOptions.disabledButtonClass);
   openPopup(cardPopup);
 }
 

@@ -3,6 +3,9 @@
   border: 1px solid #000;
   color: #000;
   opacity: .2;
-  pointer-events: none;
-  user-select: none;
+  cursor: default;
+}
+
+.form__submit_disabled:hover {
+  opacity: .2;
 }

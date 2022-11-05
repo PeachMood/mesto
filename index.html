@@ -43,25 +43,29 @@
             <h2 class="form__title">Редактировать профиль</h2>
             <label class="form__field">
               <input
-                id="name"
+                id="name-input"
                 name="name"
                 class="form__input"
                 placeholder="Ваше имя"
                 value="Жак-Ив Кусто"
-                required>
-              <span class="form__error form__error_name"></span>
+                required
+                minlength="2"
+                maxlength="40">
+              <span class="form__input-error name-input-error"></span>
             </label>
             <label class="form__field">
               <input
-                id="job"
+                id="job-input"
                 name="job"
                 class="form__input"
                 placeholder="Расскажите о себе"
                 value="Поклонник Южной Кореи"
-                required>
-              <span class="form__error form__error_job"></span>
+                required
+                minlength="2"
+                maxlength="200">
+              <span class="form__input-error job-input-error"></span>
             </label>
-            <button class="form__submit button" type="submit">Сохранить</button>
+            <button class="form__submit form__submit_disabled button" type="submit" disabled>Сохранить</button>
           </form>
         </div>
       </section>
@@ -72,22 +76,26 @@
             <h2 class="form__title">Новое место</h2>
             <label class="form__field">
               <input
-                id="place"
+                id="place-input"
                 name="place"
                 class="form__input"
-                placeholder="Название">
-              <span class="form__error"></span>
+                placeholder="Название"
+                required
+                minlength="2"
+                maxlength="30">
+              <span class="form__input-error place-input-error"></span>
             </label>
             <label class="form__field">
               <input
-                id="link"
+                id="link-input"
                 name="link"
                 type="url"
                 class="form__input"
-                placeholder="Ссылка на картинку">
-              <span class="form__error"></span>
+                placeholder="Ссылка на картинку"
+                required>
+              <span class="form__input-error link-input-error"></span>
             </label>
-            <button class="form__submit button" type="submit">Создать</button>
+            <button class="form__submit form__submit_disabled button" type="submit" disabled>Создать</button>
           </form>
         </div>
       </section>
@@ -117,6 +125,7 @@
         </figure>
       </li>
     </template>
+    <script src="./scripts/validate.js"></script>
     <script src="./scripts/cards.js"></script>
     <script src="./scripts/index.js"></script>
   </body>
