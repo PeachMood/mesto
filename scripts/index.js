@@ -61,6 +61,13 @@ function handleCloseClick(event) {
   }
 }
 
+function handleEscapeKeydown(event) {
+  if (event.key === 'Escape') {
+    const openedPopup = document.querySelector("." + POPUP_OPENED_CLASS);
+    closePopup(openedPopup);
+  }
+}
+
 function openPopup(popup) {
   popup.classList.add(POPUP_OPENED_CLASS);
 }
@@ -144,6 +151,7 @@ function handleCardFormSubmit(event) {
 }
 
 window.addEventListener('load', handleWindowLoad);
+document.body.addEventListener('keydown', handleEscapeKeydown);
 
 profilePopup.addEventListener('click', event => handleCloseClick(event));
 cardPopup.addEventListener('click', event => handleCloseClick(event));
