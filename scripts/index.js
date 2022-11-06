@@ -63,13 +63,12 @@ function handleCloseClick(event) {
 }
 
 function setEscapeKeydownHandler(popup) {
-  const handleEscapeKeydown = (event) => {
+  const handleEscapeKeydown = event => {
     if (event.key === 'Escape') {
-      closePopup(popup);
       document.body.removeEventListener('keydown', handleEscapeKeydown);
+      closePopup(popup);
     }
   }
-  
   document.body.addEventListener('keydown', handleEscapeKeydown);
 }
 
