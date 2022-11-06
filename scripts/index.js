@@ -79,20 +79,20 @@ function openPopup(popup) {
 function handleEditClick() {
   nameInput.value = nameTitle.textContent;
   jobInput.value = jobTitle.textContent;
-  
+
   const profileFormInputElements = [nameInput, jobInput];
   resetFormValidation(profileForm, profileFormInputElements, validationOptions.inputErrorClass, profileSubmitButton, validationOptions.disabledButtonClass);
-  
+
   setEscapeKeydownHandler(profilePopup);
   openPopup(profilePopup);
 }
 
 function handleAddClick() {
   cardForm.reset();
-  
+
   const cardFormInputElements = [placeInput, linkInput];
   resetFormValidation(cardForm, cardFormInputElements, validationOptions.inputErrorClass, cardSubmitButton, validationOptions.disabledButtonClass);
-  
+
   setEscapeKeydownHandler(cardPopup);
   openPopup(cardPopup);
 }
@@ -119,7 +119,7 @@ function handleImageClick(event) {
   figureImage.src = cardImage.src;
   figureImage.alt = cardImage.alt;
   figureText.textContent = cardText.textContent;
-  
+
   setEscapeKeydownHandler(figurePopup);
   openPopup(figurePopup);
 }

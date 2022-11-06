@@ -57,7 +57,7 @@ function handleFormInput(event, formElement, inputElements, inputErrorClass, but
 function setEventListeners(formElement, inputSelector, inputErrorClass, buttonSelector, disabledButtonClass) {
   const inputElements = Array.from(formElement.querySelectorAll(inputSelector));
   const buttonElement = formElement.querySelector(buttonSelector);
-  
+
   inputElements.forEach(inputElement => inputElement.addEventListener('input',
       event => handleFormInput(event, formElement, inputElements, inputErrorClass, buttonElement, disabledButtonClass))
   );
