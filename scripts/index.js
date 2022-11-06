@@ -52,7 +52,9 @@ function handleWindowLoad() {
 }
 
 function closePopup(popup) {
-  popup.classList.remove(POPUP_OPENED_CLASS);
+  if (popup) {
+    popup.classList.remove(POPUP_OPENED_CLASS);
+  }
 }
 
 function handleCloseClick(event) {
@@ -69,7 +71,9 @@ function handleEscapeKeydown(event) {
 }
 
 function openPopup(popup) {
-  popup.classList.add(POPUP_OPENED_CLASS);
+  if (popup) {
+    popup.classList.add(POPUP_OPENED_CLASS);
+  }
 }
 
 function handleEditClick() {
