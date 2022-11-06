@@ -9,6 +9,7 @@
   width: 100vw;
   height: 100vh;
   visibility: hidden;
+  cursor: pointer;
   opacity: 0;
   transition: visibility 0s .3s, opacity .3s linear;
 }

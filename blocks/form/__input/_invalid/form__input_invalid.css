@@ -1,3 +1,7 @@
 .form__input_invalid {
   border-bottom: 1px solid #FF0000;
 }
+
+.form__input_invalid:focus {
+  border-bottom: 1px solid #FF0000;
+}

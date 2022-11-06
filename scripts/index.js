@@ -35,6 +35,7 @@ const validationOptions = {
   inputErrorClass: 'form__input_invalid',
 };
 
+// Предотвращает преждевременное отображение попапов
 function showPopup(popup) {
   popup.classList.remove(POPUP_HIDDEN_CLASS);
 }
@@ -47,14 +48,12 @@ function handleWindowLoad() {
   showPopup(profilePopup);
   showPopup(cardPopup);
   showPopup(figurePopup);
-  loadCards();
   enableValidation(validationOptions);
+  loadCards();
 }
 
 function closePopup(popup) {
-  if (popup) {
-    popup.classList.remove(POPUP_OPENED_CLASS);
-  }
+  popup.classList.remove(POPUP_OPENED_CLASS);
 }
 
 function handleCloseClick(event) {
@@ -63,17 +62,19 @@ function handleCloseClick(event) {
   }
 }
 
-function handleEscapeKeydown(event) {
-  if (event.key === 'Escape') {
-    const openedPopup = document.querySelector("." + POPUP_OPENED_CLASS);
-    closePopup(openedPopup);
+function setEscapeKeydownHandler(popup) {
+  const handleEscapeKeydown = (event) => {
+    if (event.key === 'Escape') {
+      closePopup(popup);
+      document.body.removeEventListener('keydown', handleEscapeKeydown);
+    }
   }
+  
+  document.body.addEventListener('keydown', handleEscapeKeydown);
 }
 
 function openPopup(popup) {
-  if (popup) {
-    popup.classList.add(POPUP_OPENED_CLASS);
-  }
+  popup.classList.add(POPUP_OPENED_CLASS);
 }
 
 function handleEditClick() {
@@ -82,6 +83,8 @@ function handleEditClick() {
   
   const profileFormInputElements = [nameInput, jobInput];
   resetFormValidation(profileForm, profileFormInputElements, validationOptions.inputErrorClass, profileSubmitButton, validationOptions.disabledButtonClass);
+  
+  setEscapeKeydownHandler(profilePopup);
   openPopup(profilePopup);
 }
 
@@ -90,6 +93,8 @@ function handleAddClick() {
   
   const cardFormInputElements = [placeInput, linkInput];
   resetFormValidation(cardForm, cardFormInputElements, validationOptions.inputErrorClass, cardSubmitButton, validationOptions.disabledButtonClass);
+  
+  setEscapeKeydownHandler(cardPopup);
   openPopup(cardPopup);
 }
 
@@ -115,7 +120,8 @@ function handleImageClick(event) {
   figureImage.src = cardImage.src;
   figureImage.alt = cardImage.alt;
   figureText.textContent = cardText.textContent;
-
+  
+  setEscapeKeydownHandler(figurePopup);
   openPopup(figurePopup);
 }
 
@@ -155,7 +161,6 @@ function handleCardFormSubmit(event) {
 }
 
 window.addEventListener('load', handleWindowLoad);
-document.body.addEventListener('keydown', handleEscapeKeydown);
 
 profilePopup.addEventListener('click', event => handleCloseClick(event));
 cardPopup.addEventListener('click', event => handleCloseClick(event));
