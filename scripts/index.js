@@ -165,3 +165,4 @@ buttonAddCard.addEventListener('click', handleAddClick);
 
 profileForm.addEventListener('submit', handleProfileFormSubmit);
 cardForm.addEventListener('submit', handleCardFormSubmit);
+
