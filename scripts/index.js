@@ -35,7 +35,6 @@ const validationOptions = {
   inputErrorClass: 'form__input_invalid',
 };
 
-// Предотвращает преждевременное отображение попапов
 function showPopup(popup) {
   popup.classList.remove(POPUP_HIDDEN_CLASS);
 }
@@ -52,28 +51,27 @@ function handleWindowLoad() {
   loadCards();
 }
 
+function handleEscapeKeydown(event) {
+  if (event.key === 'Escape') {
+    const openedPopup = document.querySelector('.' + POPUP_OPENED_CLASS);
+    closePopup(openedPopup);
+  }
+}
+
 function closePopup(popup) {
   popup.classList.remove(POPUP_OPENED_CLASS);
+  document.body.removeEventListener('keydown', handleEscapeKeydown);
+}
+
+function openPopup(popup) {
+  popup.classList.add(POPUP_OPENED_CLASS);
+  document.body.addEventListener('keydown', handleEscapeKeydown);
 }
 
 function handleCloseClick(event) {
   if (event.target === event.currentTarget || event.target.classList.contains('popup__close')) {
     closePopup(event.currentTarget)
   }
-}
-
-function setEscapeKeydownHandler(popup) {
-  const handleEscapeKeydown = event => {
-    if (event.key === 'Escape') {
-      document.body.removeEventListener('keydown', handleEscapeKeydown);
-      closePopup(popup);
-    }
-  }
-  document.body.addEventListener('keydown', handleEscapeKeydown);
-}
-
-function openPopup(popup) {
-  popup.classList.add(POPUP_OPENED_CLASS);
 }
 
 function handleEditClick() {
@@ -83,7 +81,6 @@ function handleEditClick() {
   const profileFormInputElements = [nameInput, jobInput];
   resetFormValidation(profileForm, profileFormInputElements, validationOptions.inputErrorClass, profileSubmitButton, validationOptions.disabledButtonClass);
 
-  setEscapeKeydownHandler(profilePopup);
   openPopup(profilePopup);
 }
 
@@ -92,8 +89,7 @@ function handleAddClick() {
 
   const cardFormInputElements = [placeInput, linkInput];
   resetFormValidation(cardForm, cardFormInputElements, validationOptions.inputErrorClass, cardSubmitButton, validationOptions.disabledButtonClass);
-
-  setEscapeKeydownHandler(cardPopup);
+  
   openPopup(cardPopup);
 }
 
@@ -120,7 +116,6 @@ function handleImageClick(event) {
   figureImage.alt = cardImage.alt;
   figureText.textContent = cardText.textContent;
 
-  setEscapeKeydownHandler(figurePopup);
   openPopup(figurePopup);
 }
 
