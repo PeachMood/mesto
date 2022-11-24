@@ -1,9 +1,10 @@
+import { Card } from "./Card.js";
+import { initialCards } from './cards.js';
+
 const POPUP_HIDDEN_CLASS = 'popup_hidden';
 const POPUP_OPENED_CLASS = 'popup_opened';
-const LIKE_BUTTON_ACTIVE_CLASS = 'card__like_active';
 
 const cardsContainer=  document.querySelector('.cards__container');
-const cardTemplate = document.querySelector('#card-template').content;
 
 const profile = document.querySelector('.profile');
 const buttonEditProfile = profile.querySelector('.profile__edit');
@@ -89,7 +90,7 @@ function handleAddClick() {
 
   const cardFormInputElements = [placeInput, linkInput];
   resetFormValidation(cardForm, cardFormInputElements, validationOptions.inputErrorClass, cardSubmitButton, validationOptions.disabledButtonClass);
-  
+
   openPopup(cardPopup);
 }
 
@@ -102,54 +103,25 @@ function handleProfileFormSubmit(event) {
   closePopup(profilePopup);
 }
 
-function handleDeleteClick(event) {
-  const cardElement = event.target.closest('.card__element');
-  cardElement.remove();
-}
-
-function handleImageClick(event) {
-  const cardImage = event.target;
-  const cardElement = cardImage.closest('.card__element');
-  const cardText = cardElement.querySelector('.card__text');
-
-  figureImage.src = cardImage.src;
-  figureImage.alt = cardImage.alt;
-  figureText.textContent = cardText.textContent;
+function handleImageClick(place, link) {
+  figureText.textContent = place;
+  figureImage.src = link;
+  figureImage.alt = place;
 
   openPopup(figurePopup);
 }
 
-function handleLikeClick(event) {
-  event.target.classList.toggle(LIKE_BUTTON_ACTIVE_CLASS);
-}
-
-function createCard(card) {
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardDeleteButton = cardElement.querySelector('.card__delete');
-  const cardImage = cardElement.querySelector('.card__image');
-  const cardText = cardElement.querySelector('.card__text');
-  const cardLikeButton = cardElement.querySelector('.card__like');
-
-  cardDeleteButton.addEventListener('click', handleDeleteClick);
-  cardImage.src = card.link;
-  cardImage.alt = card.place;
-  cardImage.addEventListener('click', handleImageClick);
-  cardText.textContent = card.place;
-  cardLikeButton.addEventListener('click', handleLikeClick);
-
-  return cardElement;
-}
-
-function renderCard(card, container) {
-  const cardElement = createCard(card);
+function renderCard(data, container) {
+  const card = new Card(data, '#card-template', handleImageClick);
+  const cardElement = card.createElement();
   container.prepend(cardElement);
 }
 
 function handleCardFormSubmit(event) {
   event.preventDefault();
 
-  const card = {place: placeInput.value, link: linkInput.value};
-  renderCard(card, cardsContainer);
+  const data = {place: placeInput.value, link: linkInput.value};
+  renderCard(data, cardsContainer);
 
   closePopup(cardPopup);
 }

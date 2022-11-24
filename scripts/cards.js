@@ -1,4 +1,4 @@
-const initialCards = [
+export const initialCards = [
   {place: 'Деревня Букчон', link: './images/card-bukchon.jpg'},
   {place: 'Чхандоккун', link: './images/card-chkhandokkun.jpg'},
   {place: 'Парк Чхонгечхон', link: './images/card-chkhongechkhon.jpg'},
