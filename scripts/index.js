@@ -41,6 +41,20 @@ function showPopup(popup) {
   popup.classList.remove(POPUP_HIDDEN_CLASS);
 }
 
+function handleImageClick(place, link) {
+  figureText.textContent = place;
+  figureImage.src = link;
+  figureImage.alt = place;
+
+  openPopup(figurePopup);
+}
+
+function renderCard(data, container) {
+  const card = new Card(data, '#card-template', handleImageClick);
+  const cardElement = card.createElement();
+  container.prepend(cardElement);
+}
+
 function loadCards() {
   initialCards.forEach(card => renderCard(card, cardsContainer));
 }
@@ -81,7 +95,7 @@ function handleEditClick() {
   nameInput.value = nameTitle.textContent;
   jobInput.value = jobTitle.textContent;
 
-  profileFormValidator.resetFormValidation();
+  profileFormValidator.resetValidation();
 
   openPopup(profilePopup);
 }
@@ -89,7 +103,7 @@ function handleEditClick() {
 function handleAddClick() {
   cardForm.reset();
 
-  cardFormValidator.resetFormValidation();
+  cardFormValidator.resetValidation();
 
   openPopup(cardPopup);
 }
@@ -101,20 +115,6 @@ function handleProfileFormSubmit(event) {
   jobTitle.textContent = jobInput.value;
 
   closePopup(profilePopup);
-}
-
-function handleImageClick(place, link) {
-  figureText.textContent = place;
-  figureImage.src = link;
-  figureImage.alt = place;
-
-  openPopup(figurePopup);
-}
-
-function renderCard(data, container) {
-  const card = new Card(data, '#card-template', handleImageClick);
-  const cardElement = card.createElement();
-  container.prepend(cardElement);
 }
 
 function handleCardFormSubmit(event) {

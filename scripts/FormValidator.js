@@ -71,7 +71,7 @@ export class FormValidator {
     inputElement.addEventListener('input', event => this._handleFormInput(event));
   }
 
-  resetFormValidation() {
+  resetValidation() {
     this._inputElements.forEach(inputElement => this._hideInputError(inputElement));
     this._disableButton();
   }
