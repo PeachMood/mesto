@@ -1,8 +1,17 @@
+import { FormValidator } from "./FormValidator.js";
 import { Card } from "./Card.js";
 import { initialCards } from './cards.js';
 
 const POPUP_HIDDEN_CLASS = 'popup_hidden';
 const POPUP_OPENED_CLASS = 'popup_opened';
+
+const validationOptions = {
+  formSelector: '.form',
+  inputSelector: '.form__input',
+  buttonSelector: '.form__submit',
+  disabledButtonClass: 'form__submit_disabled',
+  inputErrorClass: 'form__input_invalid',
+};
 
 const cardsContainer=  document.querySelector('.cards__container');
 
@@ -16,25 +25,17 @@ const profilePopup = document.querySelector('.popup_profile');
 const profileForm = profilePopup.querySelector('.form');
 const nameInput = profileForm.querySelector('#name-input');
 const jobInput = profileForm.querySelector('#job-input');
-const profileSubmitButton = profileForm.querySelector('.form__submit');
+const profileFormValidator = new FormValidator(validationOptions, profileForm);
 
 const cardPopup = document.querySelector('.popup_card');
 const cardForm = cardPopup.querySelector('.form');
 const placeInput = cardForm.querySelector('#place-input');
 const linkInput = cardForm.querySelector('#link-input');
-const cardSubmitButton = cardForm.querySelector('.form__submit');
+const cardFormValidator = new FormValidator(validationOptions, cardForm);
 
 const figurePopup = document.querySelector('.popup_figure');
 const figureImage = figurePopup.querySelector('.figure__image');
 const figureText = figurePopup.querySelector('.figure__text');
-
-const validationOptions = {
-  formSelector: '.form',
-  inputSelector: '.form__input',
-  buttonSelector: '.form__submit',
-  disabledButtonClass: 'form__submit_disabled',
-  inputErrorClass: 'form__input_invalid',
-};
 
 function showPopup(popup) {
   popup.classList.remove(POPUP_HIDDEN_CLASS);
@@ -48,7 +49,8 @@ function handleWindowLoad() {
   showPopup(profilePopup);
   showPopup(cardPopup);
   showPopup(figurePopup);
-  enableValidation(validationOptions);
+  profileFormValidator.enableValidation();
+  cardFormValidator.enableValidation();
   loadCards();
 }
 
@@ -79,8 +81,7 @@ function handleEditClick() {
   nameInput.value = nameTitle.textContent;
   jobInput.value = jobTitle.textContent;
 
-  const profileFormInputElements = [nameInput, jobInput];
-  resetFormValidation(profileForm, profileFormInputElements, validationOptions.inputErrorClass, profileSubmitButton, validationOptions.disabledButtonClass);
+  profileFormValidator.resetFormValidation();
 
   openPopup(profilePopup);
 }
@@ -88,8 +89,7 @@ function handleEditClick() {
 function handleAddClick() {
   cardForm.reset();
 
-  const cardFormInputElements = [placeInput, linkInput];
-  resetFormValidation(cardForm, cardFormInputElements, validationOptions.inputErrorClass, cardSubmitButton, validationOptions.disabledButtonClass);
+  cardFormValidator.resetFormValidation();
 
   openPopup(cardPopup);
 }
