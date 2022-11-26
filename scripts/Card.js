@@ -1,22 +1,16 @@
 export class Card {
-  _data
-  _template
-  _handleImageClick
-
-  _element
-  _image
-  _text
-  _buttonLike
-  _buttonDelete
-
   constructor(data, templateSelector, handleImageClick) {
     this._data = data;
-    this._setTemplate(templateSelector);
+    this._templateSelector = templateSelector;
     this._handleImageClick = handleImageClick;
   }
 
-  _setTemplate(templateSelector) {
-    this._template = document.querySelector(templateSelector).content;
+  _createCard() {
+    return document
+      .querySelector(this._templateSelector)
+      .content
+      .querySelector('.card__element')
+      .cloneNode(true);
   }
 
   _setContent() {
@@ -36,11 +30,11 @@ export class Card {
   _setEventListeners() {
     this._buttonDelete.addEventListener('click', () => this._handleDeleteClick());
     this._buttonLike.addEventListener('click', () => this._handleLikeClick());
-    this._image.addEventListener('click', () => this._handleImageClick(this._text.textContent, this._image.src));
+    this._image.addEventListener('click', () => this._handleImageClick(this._data.place, this._data.link));
   }
 
   createElement() {
-    this._element = this._template.cloneNode(true).querySelector('.card__element');
+    this._element = this._createCard();
     this._image = this._element.querySelector('.card__image');
     this._text = this._element.querySelector('.card__text');
     this._buttonDelete = this._element.querySelector('.card__delete');

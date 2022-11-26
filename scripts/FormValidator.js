@@ -1,11 +1,4 @@
 export class FormValidator {
-  _validationOptions
-  _formElement
-
-  _inputElements
-  _errorElements
-  _buttonElement
-
   constructor(validationOptions, formElement) {
     this._validationOptions = validationOptions;
     this._formElement = formElement;
@@ -62,7 +55,7 @@ export class FormValidator {
     this._checkInputValidity(inputElement);
   }
 
-  _setErrorElement(inputElement) {
+  _cacheErrorElement(inputElement) {
     const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
     this._errorElements.set(inputElement.id, errorElement);
   }
@@ -82,7 +75,7 @@ export class FormValidator {
     this._errorElements = new Map();
 
     this._inputElements.forEach(inputElement => {
-      this._setErrorElement(inputElement);
+      this._cacheErrorElement(inputElement);
       this._setEventListener(inputElement);
     });
   }

@@ -6,3 +6,11 @@ export const initialCards = [
   {place: 'Парк Намсан', link: './images/card-namsan.jpg'},
   {place: 'Национальный парк Пукхансан', link: './images/card-pukhansan.jpg'}
 ];
+
+export const validationOptions = {
+  formSelector: '.form',
+  inputSelector: '.form__input',
+  buttonSelector: '.form__submit',
+  disabledButtonClass: 'form__submit_disabled',
+  inputErrorClass: 'form__input_invalid',
+};

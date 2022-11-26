@@ -1,17 +1,9 @@
 import { FormValidator } from './FormValidator.js';
 import { Card } from './Card.js';
-import { initialCards } from './cards.js';
+import { initialCards, validationOptions } from './constants.js';
 
 const POPUP_HIDDEN_CLASS = 'popup_hidden';
 const POPUP_OPENED_CLASS = 'popup_opened';
-
-const validationOptions = {
-  formSelector: '.form',
-  inputSelector: '.form__input',
-  buttonSelector: '.form__submit',
-  disabledButtonClass: 'form__submit_disabled',
-  inputErrorClass: 'form__input_invalid',
-};
 
 const cardsContainer=  document.querySelector('.cards__container');
 
@@ -51,11 +43,10 @@ function handleImageClick(place, link) {
 
 function renderCard(data, container) {
   const card = new Card(data, '#card-template', handleImageClick);
-  const cardElement = card.createElement();
-  container.prepend(cardElement);
+  container.prepend(card.createElement());
 }
 
-function loadCards() {
+function loadInitialCards() {
   initialCards.forEach(card => renderCard(card, cardsContainer));
 }
 
@@ -65,7 +56,7 @@ function handleWindowLoad() {
   showPopup(figurePopup);
   profileFormValidator.enableValidation();
   cardFormValidator.enableValidation();
-  loadCards();
+  loadInitialCards();
 }
 
 function handleEscapeKeydown(event) {
