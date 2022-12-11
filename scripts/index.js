@@ -1,130 +1,72 @@
+import {
+  buttonEditProfile,
+  buttonAddCard,
+  cardTemplate,
+  cardsContainerSelector,
+  profilePopupSelector,
+  cardPopupSelector,
+  figurePopupSelector,
+  nameTitleSelector,
+  jobTitleSelector,
+  initialCards,
+  validationOptions,
+  profileFormSelector,
+  cardFormSelector
+} from './constants.js';
+
+import { UserInfo } from './UserInfo.js';
 import { FormValidator } from './FormValidator.js';
 import { Card } from './Card.js';
-import { initialCards, validationOptions } from './constants.js';
+import { Section } from './Section.js';
+import { PopupWithImage } from './PopupWithImage.js';
+import { PopupWithForm } from './PopupWithForm.js';
 
-const POPUP_HIDDEN_CLASS = 'popup_hidden';
-const POPUP_OPENED_CLASS = 'popup_opened';
 
-const cardsContainer=  document.querySelector('.cards__container');
+const userInfo = new UserInfo({ nameTitleSelector, jobTitleSelector });
 
-const profile = document.querySelector('.profile');
-const buttonEditProfile = profile.querySelector('.profile__edit');
-const buttonAddCard = profile.querySelector('.profile__add');
-const nameTitle = profile.querySelector('.profile__name');
-const jobTitle = profile.querySelector('.profile__job');
+const profileFormValidator = new FormValidator(validationOptions, profileFormSelector);
+profileFormValidator.enableValidation();
 
-const profilePopup = document.querySelector('.popup_profile');
-const profileForm = profilePopup.querySelector('.form');
-const nameInput = profileForm.querySelector('#name-input');
-const jobInput = profileForm.querySelector('#job-input');
-const profileFormValidator = new FormValidator(validationOptions, profileForm);
+const cardFormValidator = new FormValidator(validationOptions, cardFormSelector);
+cardFormValidator.enableValidation();
 
-const cardPopup = document.querySelector('.popup_card');
-const cardForm = cardPopup.querySelector('.form');
-const placeInput = cardForm.querySelector('#place-input');
-const linkInput = cardForm.querySelector('#link-input');
-const cardFormValidator = new FormValidator(validationOptions, cardForm);
+const figurePopup = new PopupWithImage(figurePopupSelector);
+figurePopup.setEventListeners();
 
-const figurePopup = document.querySelector('.popup_figure');
-const figureImage = figurePopup.querySelector('.figure__image');
-const figureText = figurePopup.querySelector('.figure__text');
 
-function showPopup(popup) {
-  popup.classList.remove(POPUP_HIDDEN_CLASS);
-}
+const renderCard = (data) => {
+  const card = new Card(data, cardTemplate, () => figurePopup.open(data));
+  cardsContainer.addItem(card.createElement());
+};
+const cardsContainer = new Section({ items: initialCards, renderer: renderCard }, cardsContainerSelector);
 
-function handleImageClick(place, link) {
-  figureText.textContent = place;
-  figureImage.src = link;
-  figureImage.alt = place;
 
-  openPopup(figurePopup);
-}
-
-function renderCard(data, container) {
-  const card = new Card(data, '#card-template', handleImageClick);
-  container.prepend(card.createElement());
-}
-
-function loadInitialCards() {
-  initialCards.forEach(card => renderCard(card, cardsContainer));
-}
-
-function handleWindowLoad() {
-  showPopup(profilePopup);
-  showPopup(cardPopup);
-  showPopup(figurePopup);
-  profileFormValidator.enableValidation();
-  cardFormValidator.enableValidation();
-  loadInitialCards();
-}
-
-function handleEscapeKeydown(event) {
-  if (event.key === 'Escape') {
-    const openedPopup = document.querySelector('.' + POPUP_OPENED_CLASS);
-    closePopup(openedPopup);
-  }
-}
-
-function closePopup(popup) {
-  popup.classList.remove(POPUP_OPENED_CLASS);
-  document.body.removeEventListener('keydown', handleEscapeKeydown);
-}
-
-function openPopup(popup) {
-  popup.classList.add(POPUP_OPENED_CLASS);
-  document.body.addEventListener('keydown', handleEscapeKeydown);
-}
-
-function handleCloseClick(event) {
-  if (event.target === event.currentTarget || event.target.classList.contains('popup__close')) {
-    closePopup(event.currentTarget)
-  }
-}
-
-function handleEditClick() {
-  nameInput.value = nameTitle.textContent;
-  jobInput.value = jobTitle.textContent;
-
+const initProfileForm = () => {
+  profilePopup.setInputValues(userInfo.getUserInfo());
   profileFormValidator.resetValidation();
+};
+const handleProfileFormSubmit = (event, inputValues) => {
+  event.preventDefault();
+  userInfo.setUserInfo(inputValues);
+  profilePopup.close();
+};
+const profilePopup = new PopupWithForm(initProfileForm, handleProfileFormSubmit, profilePopupSelector);
+profilePopup.setEventListeners();
 
-  openPopup(profilePopup);
-}
 
-function handleAddClick() {
-  cardForm.reset();
-
+const initCardForm = () => {
+  profilePopup.resetForm();
   cardFormValidator.resetValidation();
-
-  openPopup(cardPopup);
-}
-
-function handleProfileFormSubmit(event) {
+};
+const handleCardFormSubmit = (event, inputValues) => {
   event.preventDefault();
+  renderCard(inputValues);
+  cardPopup.close();
+};
+const cardPopup = new PopupWithForm(initCardForm, handleCardFormSubmit, cardPopupSelector);
+cardPopup.setEventListeners();
 
-  nameTitle.textContent = nameInput.value;
-  jobTitle.textContent = jobInput.value;
 
-  closePopup(profilePopup);
-}
-
-function handleCardFormSubmit(event) {
-  event.preventDefault();
-
-  const data = {place: placeInput.value, link: linkInput.value};
-  renderCard(data, cardsContainer);
-
-  closePopup(cardPopup);
-}
-
-window.addEventListener('load', handleWindowLoad);
-
-profilePopup.addEventListener('click', event => handleCloseClick(event));
-cardPopup.addEventListener('click', event => handleCloseClick(event));
-figurePopup.addEventListener('click', event => handleCloseClick(event));
-
-buttonEditProfile.addEventListener('click', handleEditClick);
-buttonAddCard.addEventListener('click', handleAddClick);
-
-profileForm.addEventListener('submit', handleProfileFormSubmit);
-cardForm.addEventListener('submit', handleCardFormSubmit);
+buttonEditProfile.addEventListener('click', () => profilePopup.open());
+buttonAddCard.addEventListener('click', () => cardPopup.open());
+cardsContainer.renderItems();
