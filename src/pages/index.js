@@ -12,15 +12,16 @@ import {
   validationOptions,
   profileFormSelector,
   cardFormSelector
-} from './constants.js';
+} from '../utils/constants';
 
-import { UserInfo } from './UserInfo.js';
-import { FormValidator } from './FormValidator.js';
-import { Card } from './Card.js';
-import { Section } from './Section.js';
-import { PopupWithImage } from './PopupWithImage.js';
-import { PopupWithForm } from './PopupWithForm.js';
+import { UserInfo } from '../components/UserInfo.js';
+import { FormValidator } from '../components/FormValidator.js';
+import { Card } from '../components/Card.js';
+import { Section } from '../components/Section.js';
+import { PopupWithImage } from '../components/PopupWithImage.js';
+import { PopupWithForm } from '../components/PopupWithForm.js';
 
+import './index.css';
 
 const userInfo = new UserInfo({ nameTitleSelector, jobTitleSelector });
 
