@@ -11,7 +11,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'main.js',
   },
-  mode: 'development',
+  mode: 'production',
   devServer: {
     static: path.resolve(__dirname, './dist'),
     port: 8080,

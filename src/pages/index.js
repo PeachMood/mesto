@@ -14,12 +14,12 @@ import {
   cardFormSelector
 } from '../utils/constants';
 
-import { UserInfo } from '../components/UserInfo.js';
-import { FormValidator } from '../components/FormValidator.js';
-import { Card } from '../components/Card.js';
-import { Section } from '../components/Section.js';
-import { PopupWithImage } from '../components/PopupWithImage.js';
-import { PopupWithForm } from '../components/PopupWithForm.js';
+import { UserInfo } from '../components/UserInfo';
+import { FormValidator } from '../components/FormValidator';
+import { Card } from '../components/Card';
+import { Section } from '../components/Section';
+import { PopupWithImage } from '../components/PopupWithImage';
+import { PopupWithForm } from '../components/PopupWithForm';
 
 import './index.css';
 
@@ -42,8 +42,8 @@ const renderCard = (data) => {
 const cardsContainer = new Section({ items: initialCards, renderer: renderCard }, cardsContainerSelector);
 
 
-const initProfileForm = () => {
-  profilePopup.setInputValues(userInfo.getUserInfo());
+const resetProfileForm = () => {
+  profilePopup.reset();
   profileFormValidator.resetValidation();
 };
 const handleProfileFormSubmit = (event, inputValues) => {
@@ -51,12 +51,12 @@ const handleProfileFormSubmit = (event, inputValues) => {
   userInfo.setUserInfo(inputValues);
   profilePopup.close();
 };
-const profilePopup = new PopupWithForm(initProfileForm, handleProfileFormSubmit, profilePopupSelector);
+const profilePopup = new PopupWithForm(resetProfileForm, handleProfileFormSubmit, profilePopupSelector);
 profilePopup.setEventListeners();
 
 
-const initCardForm = () => {
-  profilePopup.resetForm();
+const resetCardForm = () => {
+  cardPopup.reset();
   cardFormValidator.resetValidation();
 };
 const handleCardFormSubmit = (event, inputValues) => {
@@ -64,10 +64,10 @@ const handleCardFormSubmit = (event, inputValues) => {
   renderCard(inputValues);
   cardPopup.close();
 };
-const cardPopup = new PopupWithForm(initCardForm, handleCardFormSubmit, cardPopupSelector);
+const cardPopup = new PopupWithForm(resetCardForm, handleCardFormSubmit, cardPopupSelector);
 cardPopup.setEventListeners();
 
 
-buttonEditProfile.addEventListener('click', () => profilePopup.open());
+buttonEditProfile.addEventListener('click', () => profilePopup.open(userInfo.getUserInfo()));
 buttonAddCard.addEventListener('click', () => cardPopup.open());
 cardsContainer.renderItems();

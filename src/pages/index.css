@@ -49,7 +49,6 @@
 /*Стили для блока popup*/
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
-@import url(../blocks/popup/_hidden/popup_hidden.css);
 @import url(../blocks/popup/_background/popup_background_light.css);
 @import url(../blocks/popup/_background/popup_background_dark.css);
 @import url(../blocks/popup/__container/popup__container.css);
