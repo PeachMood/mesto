@@ -42,29 +42,19 @@ const renderCard = (data) => {
 const cardsContainer = new Section({ items: initialCards, renderer: renderCard }, cardsContainerSelector);
 
 
-const resetProfileForm = () => {
-  profilePopup.reset();
-  profileFormValidator.resetValidation();
-};
-const handleProfileFormSubmit = (event, inputValues) => {
-  event.preventDefault();
+const handleProfileFormSubmit = (inputValues) => {
   userInfo.setUserInfo(inputValues);
   profilePopup.close();
 };
-const profilePopup = new PopupWithForm(resetProfileForm, handleProfileFormSubmit, profilePopupSelector);
+const profilePopup = new PopupWithForm(profilePopupSelector, handleProfileFormSubmit, () => profileFormValidator.resetValidation());
 profilePopup.setEventListeners();
 
 
-const resetCardForm = () => {
-  cardPopup.reset();
-  cardFormValidator.resetValidation();
-};
-const handleCardFormSubmit = (event, inputValues) => {
-  event.preventDefault();
+const handleCardFormSubmit = (inputValues) => {
   renderCard(inputValues);
   cardPopup.close();
 };
-const cardPopup = new PopupWithForm(resetCardForm, handleCardFormSubmit, cardPopupSelector);
+const cardPopup = new PopupWithForm(cardPopupSelector, handleCardFormSubmit, () => cardFormValidator.resetValidation());
 cardPopup.setEventListeners();
 
 
