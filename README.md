@@ -15,4 +15,4 @@
 - **ООП** для чистого кода
 
 ## Ссылка на проект
-[Место](https://PeachMood.github.io/mesto/index.html)
+[Место](https://peachmood.github.io/mesto/)
