@@ -7,13 +7,14 @@ import {
   cardPopupSelector,
   figurePopupSelector,
   nameTitleSelector,
-  jobTitleSelector,
+  aboutTitleSelector,
   initialCards,
   validationOptions,
   profileFormSelector,
-  cardFormSelector
+  cardFormSelector, apiOptions
 } from '../utils/constants';
 
+import { Api } from "../components/Api";
 import { UserInfo } from '../components/UserInfo';
 import { FormValidator } from '../components/FormValidator';
 import { Card } from '../components/Card';
@@ -23,7 +24,9 @@ import { PopupWithForm } from '../components/PopupWithForm';
 
 import './index.css';
 
-const userInfo = new UserInfo({ nameTitleSelector, jobTitleSelector });
+const api = new Api(apiOptions);
+
+const userInfo = new UserInfo({ nameTitleSelector, aboutTitleSelector });
 
 const profileFormValidator = new FormValidator(validationOptions, profileFormSelector);
 profileFormValidator.enableValidation();
