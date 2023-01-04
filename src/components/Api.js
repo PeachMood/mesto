@@ -4,7 +4,7 @@ export class Api {
     this._headers = options.headers;
   }
 
-  _validateResponse(response) {
+  _checkResponse(response) {
     if (response.ok) {
       return response.json();
     }
@@ -14,9 +14,10 @@ export class Api {
   _sendRequest(endpoint, options) {
     options.headers = this._headers;
     return fetch(`${this._baseUrl}/${endpoint}`, options)
-      .then(this._validateResponse)
+      .then(this._checkResponse)
       .then(data => data);
   }
+
   getUserInfo() {
     return this._sendRequest('users/me', { method: 'GET' });
   }
@@ -29,6 +30,13 @@ export class Api {
     return this._sendRequest('users/me', {
       method: 'PATCH',
       body: JSON.stringify(userInfo)
+    });
+  }
+
+  editUserAvatar(avatar) {
+    return this._sendRequest('users/me/avatar', {
+      method: 'PATCH',
+      body: JSON.stringify(avatar)
     });
   }
 

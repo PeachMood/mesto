@@ -78,5 +78,7 @@ export class FormValidator {
       this._cacheErrorElement(inputElement);
       this._setEventListener(inputElement);
     });
+
+    this._disableButton();
   }
 }

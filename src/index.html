@@ -18,13 +18,13 @@
     <main>
       <section class="profile">
         <div class="profile__container">
-          <img class="profile__avatar" src="<%=require('./images/profile-avatar.jpg')%>" alt="Аватар">
+          <div class="profile__avatar"></div>
           <div class="profile__info">
-            <div class="profile__wrapper">
-              <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <div class="profile__name-wrapper">
+              <h1 class="profile__name"></h1>
               <button class="profile__edit button" type="button"></button>
             </div>
-            <p class="profile__about">Поклонник Южной Кореи</p>
+            <p class="profile__about"></p>
           </div>
         </div>
         <button class="profile__add button" type="button"></button>
@@ -37,6 +37,29 @@
     <footer class="footer">
       <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
     </footer>
+    <section class="popup popup_confirm popup_background_light">
+      <div class="popup__container">
+        <button class="popup__close button" type="button"></button>
+        <form name="confirm" class="form form_confirm">
+          <h2 class="form__title form__title_confirm">Вы уверены?</h2>
+          <button class="form__submit button" type="submit">Да</button>
+        </form>
+      </div>
+    </section>
+    <section class="popup popup_avatar popup_background_light">
+      <div class="popup__container">
+        <button class="popup__close button" type="button"></button>
+        <form name="avatar" class="form form_avatar" novalidate>
+          <h2 class="form__title">Обновить аватар</h2>
+          <label class="form__field">
+            <input id="avatar-input" name="avatar" type="url" class="form__input" placeholder="Ссылка на картинку"
+              required>
+            <span class="form__input-error avatar-input-error"></span>
+          </label>
+          <button class="form__submit button" type="submit">Сохранить</button>
+        </form>
+      </div>
+    </section>
     <section class="popup popup_profile popup_background_light">
       <div class="popup__container">
         <button class="popup__close button" type="button"></button>
@@ -48,8 +71,8 @@
             <span class="form__input-error name-input-error"></span>
           </label>
           <label class="form__field">
-            <input id="about-input" name="about" class="form__input" placeholder="Расскажите о себе" required minlength="2"
-              maxlength="200">
+            <input id="about-input" name="about" class="form__input" placeholder="Расскажите о себе" required
+              minlength="2" maxlength="200">
             <span class="form__input-error about-input-error"></span>
           </label>
           <button class="form__submit button" type="submit">Сохранить</button>
@@ -62,7 +85,7 @@
         <form name="card" class="form form_card" novalidate>
           <h2 class="form__title">Новое место</h2>
           <label class="form__field">
-            <input id="place-input" name="place" class="form__input" placeholder="Название" required minlength="2"
+            <input id="place-input" name="name" class="form__input" placeholder="Название" required minlength="2"
               maxlength="30">
             <span class="form__input-error place-input-error"></span>
           </label>
@@ -70,7 +93,7 @@
             <input id="link-input" name="link" type="url" class="form__input" placeholder="Ссылка на картинку" required>
             <span class="form__input-error link-input-error"></span>
           </label>
-          <button class="form__submit button" type="submit">Создать</button>
+          <button class="form__submit button" type="submit">Сохранить</button>
         </form>
       </div>
     </section>
@@ -95,7 +118,10 @@
         </div>
         <figcaption class="card__caption">
           <h2 class="card__text"></h2>
-          <button class="card__like button" type="button"></button>
+          <div class="card__wrapper">
+            <button class="card__like button" type="button"></button>
+            <span class="card__counter"></span>
+          </div>
         </figcaption>
       </figure>
     </li>

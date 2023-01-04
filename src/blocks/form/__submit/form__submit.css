@@ -8,7 +8,6 @@
   font-size: 18px;
   font-weight: 400;
   line-height: 22px;
-  margin-top: 11px;
   transition: opacity linear .3s;
 }
 
@@ -21,6 +20,5 @@
     height: 46px;
     font-size: 14px;
     line-height: 17px;
-    margin-top: 8px;
   }
 }

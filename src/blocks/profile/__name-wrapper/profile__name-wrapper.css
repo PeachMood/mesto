@@ -1,4 +1,4 @@
-.profile__wrapper {
+.profile__name-wrapper {
   display: flex;
   align-items: center;
   gap: 18px;
@@ -6,13 +6,13 @@
 }
 
 @media screen and (max-width: 720px) {
-  .profile__wrapper {
+  .profile__name-wrapper {
     justify-content: center;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .profile__wrapper {
+  .profile__name-wrapper {
     gap: 10px;
   }
 }
