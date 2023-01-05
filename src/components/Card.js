@@ -71,12 +71,13 @@ export class Card {
     return this._cardElement;
   }
 
-  like(likes) {
+  updateLikes(likes) {
     this._data.likes = likes;
     this._renderLikes();
   }
 
   delete() {
     this._cardElement.remove();
+    this._cardElement = null;
   }
 }

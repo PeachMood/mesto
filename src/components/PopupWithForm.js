@@ -30,18 +30,16 @@ export class PopupWithForm extends Popup {
     }
   }
 
-  loading(isLoading) {
-    if (isLoading) {
-      this._buttonSubmit.textContent = 'Сохранение...';
-    } else {
-      this._buttonSubmit.textContent = 'Сохранить';
-    }
+  setButtonText(text) {
+    this._buttonSubmit.textContent = text;
   }
 
   reset() {
     this._formElement.reset();
   }
 
+  /* Поскольку в JavaScript нет возможности для перегрузки методов, параметр inputValues является необязательным
+  Другими словами, если использовать метод open() без параметров, то форма откроется с пустыми полями */
   open(inputValues) {
     if (inputValues) {
       this._setInputValues(inputValues);

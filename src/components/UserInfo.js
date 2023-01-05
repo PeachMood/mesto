@@ -20,8 +20,7 @@ export class UserInfo {
   }
 
   setUserInfo({ name, about }) {
-    this._data.name = name;
-    this._data.about = about;
+    this._data = { ...this._data, name, about };
     this._nameTitle.textContent = this._data.name;
     this._aboutTitle.textContent = this._data.about;
   }

@@ -35,7 +35,7 @@ const handleLikeClick = (card) => {
   const cardId = card.getData()._id;
   const response = card.isLiked() ? api.deleteLike(cardId) : api.addLike(cardId);
   response
-    .then(data => card.like(data.likes))
+    .then(data => card.updateLikes(data.likes))
     .catch(error => console.log(error));
 };
 
@@ -53,37 +53,49 @@ const handleDeleteClick = (card) => {
   confirmPopup.open();
 }
 
-const renderCard = (data) => {
+const createCard = (data) => {
   const info = userInfo.getUserInfo();
-  const card = new Card(data, info._id, cardTemplate, () => figurePopup.open(data), handleLikeClick, handleDeleteClick);
-  cardsContainer.addItem(card.create());
+  return new Card(data, info._id, cardTemplate, () => figurePopup.open(data), handleLikeClick, handleDeleteClick);
+};
+
+/* Функция renderCard отвечает только за создание DOM-елемента карточки
+Логика добавления элемента в контейнер теперь инкапсулирована в классе Section и не зависит от внешних функций */
+const renderCard = (data) => {
+  const card = createCard(data);
+  return card.create();
 };
 
 const handleAvatarFormSubmit = (inputValues) => {
-  avatarPopup.loading(true);
+  avatarPopup.setButtonText('Сохранение...');
   api.editUserAvatar(inputValues)
-    .then(info => userInfo.setUserAvatar(info))
+    .then(info => {
+      userInfo.setUserAvatar(info);
+      avatarPopup.close();
+    })
     .catch(error => console.log(error))
-    .finally(() => avatarPopup.loading(false));
-  avatarPopup.close();
+    .finally(() => avatarPopup.setButtonText('Сохранить'));
 };
 
 const handleProfileFormSubmit = (inputValues) => {
-  profilePopup.loading(true);
+  profilePopup.setButtonText('Сохранение...');
   api.editUserInfo(inputValues)
-    .then(info => userInfo.setUserInfo(info))
+    .then(info => {
+      userInfo.setUserInfo(info);
+      profilePopup.close();
+    })
     .catch(error => console.log(error))
-    .finally(() => profilePopup.loading(false));
-  profilePopup.close();
+    .finally(() => profilePopup.setButtonText('Сохранить'));
 };
 
 const handleCardFormSubmit = (inputValues) => {
-  cardPopup.loading(true);
+  cardPopup.setButtonText('Создание...');
   api.addCard(inputValues)
-    .then(card => renderCard(card))
+    .then(card => {
+      cardsContainer.addItem(card);
+      cardPopup.close();
+    })
     .catch(error => console.log(error))
-    .finally(() => cardPopup.loading(false));
-  cardPopup.close();
+    .finally(() => cardPopup.setButtonText('Создать'));
 };
 
 const handleEditAvatarClick = () => {
@@ -105,8 +117,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
     userInfo.setUserId(info);
     userInfo.setUserInfo(info);
     userInfo.setUserAvatar(info);
-    cardsContainer.setItems(initialCards);
-    cardsContainer.renderItems();
+    cardsContainer.renderItems(initialCards);
   })
   .catch(error => console.log(error));
 

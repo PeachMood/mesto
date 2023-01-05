@@ -4,20 +4,18 @@ export class Section {
     this._container = document.querySelector(containerSelector);
   }
 
-  setItems(items) {
-    this._items = items;
-  }
-
+  // Добавляет DOM-элемент в контейнер
   addItem(item) {
-    this._container.prepend(item);
+    const renderedItem = this._renderItemCallback(item);
+    this._container.prepend(renderedItem);
   }
 
   clear() {
     this._container.innerHTML = '';
   }
 
-  renderItems() {
+  renderItems(items) {
     this.clear();
-    this._items.forEach(this._renderItemCallback);
+    items.forEach(item => this.addItem(item));
   }
 }

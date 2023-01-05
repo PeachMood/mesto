@@ -14,8 +14,7 @@ export class Api {
   _sendRequest(endpoint, options) {
     options.headers = this._headers;
     return fetch(`${this._baseUrl}/${endpoint}`, options)
-      .then(this._checkResponse)
-      .then(data => data);
+      .then(this._checkResponse);
   }
 
   getUserInfo() {
