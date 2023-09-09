@@ -14,5 +14,25 @@
 - **Методология БЭМ** для грамотной разработки интерфейса
 - **ООП** для чистого кода
 
-## Ссылка на проект
-[Место](https://peachmood.github.io/mesto/)
+## Начало работы
+### Требования 
+Для работы приложения необходимо установить:
+* [Node.js](https://nodejs.org/ru/blog/release/v18.12.0) 18.12+
+* [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) (обычно идет с Node.js)
+
+### Установка 
+1. Клонируйте репозиторий
+   ```
+   git clone https://github.com/PeachMood/mesto.git
+   cd ./mesto
+   ```
+2. Установите зависимости
+   ```
+   npm install
+   ```
+
+### Запуск
+После установки зависимостей приложение можно запустить в двух режимах.
+1. Development: `npm run dev`
+2. Production: `npm run build`
+   
